@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Homework</title>
 </head>
+
 <body>
-<!--
+  <!--
 Обязательное задание.
 
 Необходимо попросить пользователя ввести два числа в переменные `a` и `b`.
@@ -18,10 +20,51 @@
 `a` и `b`.
 В остальных случаях программа не должна ничего выводить.
 -->
-<script>
-  "use strict";
+  <script>
+    "use strict";
 
-  // Здесь пишем решение, данный комментарий необходимо стереть.
-</script>
+    /**
+     * Функция выводит в консоль.лог результат вычислений.
+    */
+    function showCalculation() {
+      const calculation = getCalculation();
+      if (typeof calculation === "number") console.log(calculation);
+    }
+
+    /**
+     * Функция проводит вычисления в зависимости от того какие числа
+     * были введены (положительные, отрицательные или положительное и
+     * отрицательное).
+    */
+    function getCalculation() {
+      const signOfNumbers = getSignOfNumbers();
+      if (signOfNumbers === "positive") {
+        return a - b;
+      } else if (signOfNumbers === "negative") {
+        return a * b;
+      } else if (signOfNumbers === "positiveAndNegative") {
+        return a + b;
+      }
+    }
+
+    /**
+     * Функция показывает какие числа были введены
+     * (положительные, отрицательные или положительное и отрицательное).
+    */
+    function getSignOfNumbers() {
+      if (a > 0 && b > 0) {
+        return "positive";
+      } else if (a < 0 && b < 0) {
+        return "negative";
+      } else if (a * b < 0) {
+        return "positiveAndNegative";
+      }
+    }
+
+    const a = +prompt(`Введите чило "a"`);
+    const b = +prompt(`Введите число "b"`);
+    showCalculation();
+  </script>
 </body>
+
 </html>
