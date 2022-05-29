@@ -132,6 +132,10 @@
         if (i % 2) el.style.background = "red"
       });
 
+    document
+      .querySelectorAll('li:nth-child(odd)')
+      .forEach(el => el.style.backgroundColor = 'blue');
+
   </script>
 </body>
 
