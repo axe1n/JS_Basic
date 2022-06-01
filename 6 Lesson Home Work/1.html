@@ -95,15 +95,10 @@
      */
     function delEl(selector, index) {
       const el = `${selector}:nth-of-type(${index})`;
-      return document.querySelector(el);
+      return document.querySelector(el).remove();
     }
 
-    setTimeout(() => delEl('.product', 1).remove(), 2000);
-
-
-
-
-
+    setTimeout(() => delEl('.product', 1), 2000);
 
   </script>
 </body>
