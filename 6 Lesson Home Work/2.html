@@ -27,7 +27,6 @@
 Выполнить все задачи в теге script. Комментарии, в которых написаны задачи, не
 стирать, код с решением задачи пишем под комментарием.
 -->
-
   <input id="from" type="text">
   В инпуте написано: <span></span>
 
@@ -60,9 +59,6 @@
     <button>Отправить</button>
   </form>
 
-
-  <input type="text"> oninput: <span id="result"></span>
-
   <script>
     "use strict";
 
@@ -71,21 +67,12 @@
     должно моментально отображаться в span. То есть при печати в input'е тег span
     также должен меняться.
     */
-    // var input = document.body.children[0];
-
-    // input.oninput = function () {
-    //   document.getElementById('result').innerHTML = input.value;
-    // };
-
-    const inputFrom = document.querySelectorAll('#from');
-
-    // inputFrom
-    //   .forEach(el=>el.oninput = function () {
-    //   document.getElementsByClassName
-    // });
-    console.log(document
-      .querySelectorAll('#from + span').textContent = "привет");
-
+    const inputsFrom = document.querySelectorAll('#from');
+    inputsFrom.forEach(el => {
+      el.oninput = function () {
+        document.querySelector('#from + span').innerHTML = el.value;
+      }
+    });
 
     /*
     2. При клике на кнопку с классом messageBtn необходимо элементу с классом
@@ -93,7 +80,15 @@
     1) добавить два класса: animate__animated и animate__fadeInLeftBig
     2) поставить данному элементу стиль visibility в значение 'visible'.
      */
-
+    const message = document.querySelector('.message');
+    document.body
+      .addEventListener('click', event => {
+        if (!event.target.classList.contains('messageBtn')) {
+          return;
+        }
+        message.classList.add('animate__animated', 'nimate__fadeInLeftBig');
+        message.style.visibility = 'visible';
+      });
 
     /*
     3. Необходимо при отправке формы проверить, заполнены ли все поля в этой
@@ -106,8 +101,25 @@
     данному полю).
     Если поле было чем-либо заполнено, подсветку (класс error) необходимо убрать.
      */
+    const formEl = document.querySelector('form');
+    const chekFormEls = formEl.querySelectorAll('input, select');
+    formEl.addEventListener('submit', event => {
+      chekFormEls.forEach(el => {
+        if (el.value === '') {
+          el.classList.add('error');
+          event.preventDefault();
+        }
+      });
+    });
 
-
+    formEl.addEventListener('input', event => {
+      if (!event.target.classList.contains('form-control')) {
+        return;
+      }
+      event.target.value === ''
+        ? event.target.classList.add('error')
+        : event.target.classList.remove('error');
+    });
   </script>
 </body>
 
