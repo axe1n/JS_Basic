@@ -20,9 +20,27 @@ featuredItemsEl.addEventListener('click', event => {
     }
 
     cartCounterEl.innerHTML = cartCounter++;
-    if (!cartCounterEl.hasOwnProperty('visible')) cartCounterEl.style.visibility = 'visible';
+    if (!cartCounterEl.hasOwnProperty('visible')) {
+        cartCounterEl.style.visibility = 'visible';
+    }
 
     cart = event.target.closest('.featuredItem').dataset;
+
+    const itemName = document.querySelector('.itemName');
+    const itemQty = document.querySelector('.itemQty');
+    const itemPrice = document.querySelector('.itemPrice');
+
+
+
+
+
+    itemName.insertAdjacentHTML('beforeend', `
+    <div class="id${cart.id}">${cart.name}</div>
+    `);
+
+
+    itemQty.insertAdjacentHTML('beforeend', `<div>${cart.id}</div>`);
+    itemPrice.insertAdjacentHTML('beforeend', `<div>${cart.price}</div>`);
 
     console.log(cart);
 });

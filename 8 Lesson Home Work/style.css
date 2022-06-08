@@ -79,7 +79,7 @@ body {
 }
 
 .cartContents {
-    width: 50vh;
+    width: 500px;
     position: absolute;
     top: 40px;
     right: 200px;
