@@ -79,7 +79,7 @@ body {
 }
 
 .cartContents {
-    width: 500px;
+    width: 1000px;
     position: absolute;
     top: 40px;
     right: 200px;
@@ -87,9 +87,20 @@ body {
     grid-template-columns: repeat(4, 1fr);
     background: gray;
     border: 3px solid rgb(201, 143, 143);
+    font-size: 18px;
+    text-align: center;
 }
 
-.allTotal {
+.itemName,
+.itemQty,
+.itemPrice,
+.total,
+.totalAll {
+    border: 1px solid #000;
+}
+
+
+.totalAll {
     grid-column: 1 / -1;
     grid-row: 2 / 3;
     text-align: right;
